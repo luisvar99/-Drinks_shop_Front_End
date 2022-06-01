@@ -1,0 +1,19 @@
+.navbar_main_container{
+    background: radial-gradient(circle, rgba(0,0,0,1) 61%, rgba(29,26,26,1) 93%);
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    height:8vh
+}
+
+.nav_bar_ul{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 4rem;
+}
+.nav_bar_ul li{
+    list-style: none;
+    margin: 0px 10px;
+    color: aliceblue;
+}

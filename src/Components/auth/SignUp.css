@@ -1,0 +1,7 @@
+.login_btn{
+    color: aliceblue;
+}
+
+.login_btn:hover{
+    cursor: pointer;
+}

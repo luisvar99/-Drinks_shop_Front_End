@@ -1,0 +1,55 @@
+.add_drink_main_container{
+    background: radial-gradient(circle, rgba(0,0,0,1) 61%, rgba(29,26,26,1) 93%);
+    height: 100vH;
+    display: flex;
+    justify-content:center
+}
+.add_drink_main_container h2{
+    color: aliceblue;
+    margin-bottom:1rem
+}
+
+.form_container{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction:column;
+    width: 100%;
+}
+.form_container div{
+    margin: 1rem 0rem;
+    color: aliceblue;
+}
+
+.form{
+    width: 30%;
+    border: solid aliceblue 2px;
+    border-radius: 5px;
+}
+
+.form input,textarea, button{
+    border-radius: 5px;
+    border: none;
+    margin-left: 1rem;
+    margin-top: 5px;
+    padding: 6px
+}
+.form input[type="text"]{
+    width:70%
+}
+.form input[type="number"]{
+    width:10%
+}
+
+.save_btn{
+    width:80%;
+    background-color: green;
+    margin: .8rem 1rem;
+    font-size: 1rem;
+    color: aliceblue
+}
+
+.form p{
+    margin-left: 1rem;
+    color: aliceblue
+}

@@ -1,0 +1,35 @@
+.main_detail_container{
+    background: radial-gradient(circle, rgba(0,0,0,1) 61%, rgba(29,26,26,1) 93%);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.detail_container{
+    /* border: aliceblue solid; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    width: 70%;
+}
+
+.sub_detail_container{
+    width: 30vw;
+}
+.sub_detail_container img{
+    width: 100%;
+}
+
+.third_detail_container p {
+    color: aliceblue;
+    padding: 5px 0px
+}
+
+.waIcon{
+    color: aliceblue;
+    font-size:4rem;
+    margin-top: 13rem;
+    margin-left: 38rem;
+    position:fixed;
+}

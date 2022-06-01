@@ -1,0 +1,78 @@
+.dashboard_main_container{
+    background: radial-gradient(circle, rgba(0,0,0,1) 61%, rgba(29,26,26,1) 93%);
+    height: 100vH
+}
+
+table {
+    margin-top: 3rem;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .id_row{
+      width: 6%
+  }
+
+  .price_row{
+      width: 8%
+  }
+
+  .name_row{
+      width: 40%
+  }
+  
+  tr {
+    background: radial-gradient(circle, rgba(0,0,0,1) 61%, rgba(29,26,26,1) 93%);
+    color: aliceblue;
+  }
+
+  .dashboard_title{
+      text-align: center;
+      color: aliceblue;
+  }
+
+.dashboard_add_drink_btn{
+    display: inline-block;
+    margin-top: 3rem;
+    margin-left: 4rem;
+    text-decoration: none;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 5px;
+    padding: 5px
+}
+
+.edit_row_btn{
+    width: 10%
+}
+
+.delete_row_btn{
+    width: 10%
+}
+
+.edit_btn{
+    text-decoration: none;
+    color: black;
+    background-color: yellow;
+    border-radius: 5px;
+    padding: 5px 25px;
+    
+}
+
+.delete_btn{
+    text-decoration: none;
+    color: black;
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px 25px;
+    color: aliceblue;
+}
