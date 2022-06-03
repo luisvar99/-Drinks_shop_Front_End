@@ -27,16 +27,16 @@ export default function DrinksByCategory() {
     }, [drinkName])
 
     const getDrinksByCategory = () => {
-        axios.get('http://localhost:4000/drinksByCategory/'+params.name).then((res) => {
-            setDrinks(res.data)
+        axios.get('https://drinkstienda.herokuapp.com/drinksByCategory/'+params.category).then((res) => {
             console.log(res.data);
+            setDrinks(res.data)
         }).catch((err) => {
             console.log(err);
         })
     }
 
     const getDrinksByName = () => {
-        axios.get('http://localhost:4000/drinksByName/'+drinkName).then((res) => {
+        axios.get('https://drinkstienda.herokuapp.com/drinksByName/'+drinkName).then((res) => {
             setDrinksByName(res.data)
             setShowAll(false)
             //console.log(res.data);
@@ -65,8 +65,9 @@ export default function DrinksByCategory() {
                             <div className='drinkByCategory_card'>
                                 <p className='drinkByCategory_title'>{drink.name}</p>
                                 <div className='img_container'>
-                                    <img src={drink.imgUrl} alt={drink.name} className='category_img'/>
+                                    <img src={drink.img} alt={drink.name} className='category_img'/>
                                 </div>
+                                <button /* onClick={} */></button>
                             </div>
                         </Link>
                         

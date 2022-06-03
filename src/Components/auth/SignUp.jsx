@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 export default function SignUp() {
     const [name, setName] = useState("")
     const [last_name, setLast_name] = useState("")
-    const [phone, setPhone] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -18,41 +17,59 @@ export default function SignUp() {
     console.log(last_name);
     console.log(phone);
 }) */
-
-    const createNewUser = async (e) =>{
+    const checkUserName = async (e) =>{
         e.preventDefault();
         //setAddingLoder("Añadiendo producto...");
         try{
-        await axios.post('http://localhost:4000/newClient',
-        {
-            name: name,
-            username,
-            password,
-            last_name: last_name,
-            phone: phone,
+        await axios.get(`http://localhost:4000/checkUserName/${username}`).then((res)=> {
+            if(res.data.length ===0){
+                console.log('Data: ',res.data);
+                //alert("OK")
+                createNewUser();
+            }else{
+                console.log('Data: ',res.data);
+                alert("Invalid Username")
+            }
+        });
 
-        }
-        )
-        navigate("/login");
         }catch(e){
             alert("Error")
         }
+    }
+
+
+    const createNewUser = async () =>{
+        //setAddingLoder("Añadiendo producto...");
+        await axios.post('http://localhost:4000/newClient',
+        {
+            username,
+            password,
+            name,
+            last_name,
+
+        }).then(()=> {
+            alert("Client Added")
+            createUserCart();
+            //navigate("/login");
+            
+        }).catch((err)=>{
+            alert("Error")
+        });
+
         //setAddingLoder("Producto añadido!");
-        createUserCart();
         
     }
 
-    const createUserCart = async (e) =>{
-        e.preventDefault();
+    const createUserCart = async () =>{
         //setAddingLoder("Añadiendo producto...");
         try{
-        await axios.post('http://localhost:4000/userCart',
+        await axios.post('http://localhost:4000/createUserCart',
         {
-            name: name,
-            last_name: last_name,
-            phone: phone
+           username
         }
-        )
+        ).then(()=>{
+            alert("Cart created!")
+        })
         }catch(e){
             alert("Error")
         }
@@ -62,12 +79,11 @@ export default function SignUp() {
     
 
     return (
-        <form onSubmit={createNewUser}>
+        <form onSubmit={checkUserName}>
             <input type="text" onChange={(e)=>setName(e.target.value)}/>
             <input type="text" onChange={(e)=>setLast_name(e.target.value)}/>
             <input type="text" onChange={(e)=>setUsername(e.target.value)}/>
             <input type="text" onChange={(e)=>setPassword(e.target.value)}/>
-            <input type="tel" onChange={(e)=>setPhone(e.target.value)}/>
             <button type="submit">Registrarme</button>
             
         </form>

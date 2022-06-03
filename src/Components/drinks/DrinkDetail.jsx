@@ -17,16 +17,16 @@ export default function DrinkDetail() {
     
     useEffect(() => {
         getDrink();
-        console.log(localStorage);
+        //console.log(localStorage);
     })
 
     const getDrink = () => {
-        axios.get('http://localhost:4000/drinks/' + params.id).then( (res) => {
+        axios.get('https://drinkstienda.herokuapp.com/drinks/' + params.id).then( (res) => {
             console.log('Drink Found -> ' + JSON.stringify(res.data));
             console.log('Params -> ' + JSON.stringify(params.id));
             setDrinkName(res.data[0].name);
             setDrinkDescription(res.data[0].description);
-            setDrinkImg(res.data[0].imgUrl);
+            setDrinkImg(res.data[0].img);
             setDrinkPrice(res.data[0].price);
         }).catch((err)=>{
             console.log(err);

@@ -11,12 +11,17 @@ export default function Home() {
 
     const [categories, setCategories] = useState([]);
 
+    //const {client_id} = useContext(UserContext);
+
+    
     useEffect(() => {
-     getCategories();
+        getCategories();
+        console.log('client Id en Home: ' + localStorage.getItem('client_id'))
+        //console.log(client_id);
     }, [])
 
     const getCategories = () => {
-        axios.get('http://localhost:4000/categories').then((res)=>{
+        axios.get('https://drinkstienda.herokuapp.com/categories').then((res)=>{
             console.log(res.data);
             setCategories(res.data)
         }).catch((err) => {

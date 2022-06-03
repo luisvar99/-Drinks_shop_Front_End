@@ -23,7 +23,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/:client_id' element={<Home/>}/>
-              <Route path='drinks/:name' element={<DrinksByCategory/>}/>
+              <Route path='drinks/:category' element={<DrinksByCategory/>}/>
               <Route path='drinks/:id/details' element={<DrinkDetail/>}/>
               <Route path='admin/dashboard' element={<Dashboard/>}/>
               <Route path='admin/addDrink' element={<AddDrink/>}/>

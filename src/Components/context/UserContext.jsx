@@ -3,14 +3,9 @@ import { createContext, useEffect, useState } from "react";
 const UserContext = createContext({});
 
 const UserProvider = ({children}) => {
-    const [userData, setUserData] = useState({
-        id:'',
-        first_name:'',
-        last_name:'',
-    })
-
-        
-    return (<UserContext.Provider value={userData}>{children}</UserContext.Provider>)
+    const [client_id, setClient_id] = useState("")    
+  
+    return (<UserContext.Provider value={{client_id, setClient_id}}>{children}</UserContext.Provider>)
 
 
 }
