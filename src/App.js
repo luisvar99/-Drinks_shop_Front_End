@@ -14,6 +14,7 @@ import SignUp from './Components/auth/SignUp'
 import Profile from './Components/user/Profile'
 import UserProvider from './Components/context/UserContext';
 import Login from './Components/auth/Login';
+import UserCart from './Components/user/UserCart';
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
               <Route path='admin/addDrink' element={<AddDrink/>}/>
               <Route path='SignUp' element={<SignUp/>}/>
               <Route path='myProfile' element={<Profile/>}/>
-              <Route path='login' element={<Login/>}/>             
+              <Route path='login' element={<Login/>}/>         
+              <Route path='userCart/:username' element={<UserCart/>}/>         
             </Routes>
       </BrowserRouter>
     </UserProvider>

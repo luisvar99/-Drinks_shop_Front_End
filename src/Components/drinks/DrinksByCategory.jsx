@@ -27,7 +27,7 @@ export default function DrinksByCategory() {
     }, [drinkName])
 
     const getDrinksByCategory = () => {
-        axios.get('https://drinkstienda.herokuapp.com/drinksByCategory/'+params.category).then((res) => {
+        axios.get('http://localhost:4000/drinksByCategory/'+params.category).then((res) => {
             console.log(res.data);
             setDrinks(res.data)
         }).catch((err) => {
@@ -36,7 +36,7 @@ export default function DrinksByCategory() {
     }
 
     const getDrinksByName = () => {
-        axios.get('https://drinkstienda.herokuapp.com/drinksByName/'+drinkName).then((res) => {
+        axios.get('http://localhost:4000/drinksByName/'+drinkName.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())))).then((res) => {
             setDrinksByName(res.data)
             setShowAll(false)
             //console.log(res.data);
@@ -44,6 +44,7 @@ export default function DrinksByCategory() {
             console.log('error -> ' + err);
         })
     }
+
 
     return (
         <div className='drinkByCategory_main_container'>
@@ -60,16 +61,16 @@ export default function DrinksByCategory() {
                     {showAll && 
                             
                         drinks.map((drink)=>(
-                        
-                        <Link to={`/drinks/${drink.product_id}/details`} className='link_' key={drink.product_id}>
+                            <>
                             <div className='drinkByCategory_card'>
-                                <p className='drinkByCategory_title'>{drink.name}</p>
+                            <Link to={`/drinks/${drink.product_id}/details`} className='link_' key={drink.product_id}>
                                 <div className='img_container'>
-                                    <img src={drink.img} alt={drink.name} className='category_img'/>
+                                    <img src={drink.img_URL} alt={drink.name} className='category_img'/>
                                 </div>
-                                <button /* onClick={} */></button>
+                                <p className='drinkByCategory_title'>{drink.name}</p>
+                            </Link>
                             </div>
-                        </Link>
+                        </>
                         
                     ))}
 
@@ -81,7 +82,7 @@ export default function DrinksByCategory() {
                             <div className='drinkByCategory_card'>
                                 <p className='drinkByCategory_title'>{drink.name}</p>
                                 <div className='img_container'>
-                                    <img src={drink.imgUrl} alt="image"  className='category_img'/>
+                                    <img src={drink.imgUrl} alt="img"  className='category_img'/>
                                 </div>
                             </div>
                         </Link>

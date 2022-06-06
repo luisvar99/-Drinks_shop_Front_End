@@ -2,8 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import './HomeStyles.css'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import { useAuth0 } from '@auth0/auth0-react'
-import UserContext from './context/UserContext'
+import {UserContext} from './context/UserContext'
 
 
 
@@ -11,17 +10,17 @@ export default function Home() {
 
     const [categories, setCategories] = useState([]);
 
-    //const {client_id} = useContext(UserContext);
+    const {client} = useContext(UserContext);
 
     
     useEffect(() => {
         getCategories();
-        console.log('client Id en Home: ' + localStorage.getItem('client_id'))
-        //console.log(client_id);
+        //console.log('client Id en Home: ' + localStorage.getItem('client_id'))
+        console.log('Context desde Home: '+ JSON.stringify(client));
     }, [])
 
     const getCategories = () => {
-        axios.get('https://drinkstienda.herokuapp.com/categories').then((res)=>{
+        axios.get('http://localhost:4000/categories').then((res)=>{
             console.log(res.data);
             setCategories(res.data)
         }).catch((err) => {
@@ -31,7 +30,7 @@ export default function Home() {
 
     return (
         <div className='home_main_container'>
-            <h1 className='home_title'>Find any liquor you want</h1>
+            {/* <h1 className='home_title'>Find any liquor you want</h1> */}
             <div className='home_second_container'>
                 <div className='category_card_conatiner'>
                     {  categories.map((category)=>(
@@ -40,7 +39,7 @@ export default function Home() {
                             <div className='category_card'>
                                 <p className='category_title'>{category.name}</p>
                                 <div className='img_container'>
-                                    <img src="imgs/1796_sta_teresa_1.png" alt="image"  className='category_img'/>
+                                    <img src="https://cnnespanol.cnn.com/wp-content/uploads/2019/12/s_64a163f16ecbb099e52f2f8271f73cbbfcfc9034be4d646f7375e4db1ca6f3d7_1573501883482_ap_19001106049831-1.jpg?quality=100&strip=info&w=320&h=240&crop=1" alt="image"  className='category_img'/>
                                 </div>
                             </div>
                         </Link>

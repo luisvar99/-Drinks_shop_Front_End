@@ -50,7 +50,7 @@ export default function SignUp() {
         }).then(()=> {
             alert("Client Added")
             createUserCart();
-            //navigate("/login");
+            navigate("/login");
             
         }).catch((err)=>{
             alert("Error")
@@ -69,6 +69,7 @@ export default function SignUp() {
         }
         ).then(()=>{
             alert("Cart created!")
+            localStorage.setItem('username', username)
         })
         }catch(e){
             alert("Error")
