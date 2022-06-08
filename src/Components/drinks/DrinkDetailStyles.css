@@ -33,3 +33,14 @@
     margin-left: 38rem;
     position:fixed;
 }
+
+.quantity_set_up{
+    display:flex;
+}
+.quantity_set_up>button{
+    margin:0
+}
+
+.quantity_set_up>p{
+    padding: 0 10px;
+}

@@ -13,14 +13,15 @@ export default function DrinkDetail() {
     const [drinkPrice, setDrinkPrice] = useState(0);
     const [drinkDescription, setDrinkDescription] = useState('');
     const [quantity, setQuantity] = useState(1);
-    const [userCart, setUserCart] = useState(1);
+    const [userCart, setUserCart] = useState(0);
+    const [username, setUsername] = useState("");
 
     const params = useParams();
     
     useEffect(() => {
         getDrink();
         getUserCart();
-        //console.log(localStorage);
+        setUsername(localStorage.getItem("username"));
     },[])
 
     const getDrink = () => {
@@ -37,24 +38,36 @@ export default function DrinkDetail() {
     }
 
     const addToCart = (product_id, quantity, userCart) => {
-        axios.post('http://localhost:4000/addToCart', {
-            product_id,
-            quantity,
-            cart_id: userCart 
-        }).then((res) => {
-            alert('Added to cart');
+            axios.post('http://localhost:4000/addToCart', {
+                product_id,
+                quantity,
+                cart_id: userCart 
+            }).then((res) => {
+                alert('Added to cart');
+            }).catch((err) => {
+                console.log('error -> ' + err);
+            })
+    }
+
+    const getUserCart = () => {
+        console.log("User: " + localStorage.getItem('username'));
+        axios.get('http://localhost:4000/getUserCartId/'+localStorage.getItem('username')).then((res) => {
+            if(res.data.length!==0){
+                console.log('Carrito actual_: ' , res.data);
+                setUserCart(res.data);
+            }else{
+                console.log("Carrito actual: " + res.data);
+                console.log("State Carrito actual: " + userCart);
+            }
         }).catch((err) => {
             console.log('error -> ' + err);
         })
     }
 
-    const getUserCart = () => {
-        axios.get('http://localhost:4000/getUserCart/'+localStorage.getItem('username')).then((res) => {
-            console.log('userCart -> ' , res.data);
-            setUserCart(res.data);
-        }).catch((err) => {
-            console.log('error -> ' + err);
-        })
+    const editQuantity = () =>{
+        if(quantity!==1){
+            setQuantity(quantity-1)
+        }
     }
 
     return (
@@ -68,8 +81,12 @@ export default function DrinkDetail() {
                     <p style={{fontSize:'2rem'}}>{drinkName}</p>
                     <p>{drinkDescription}</p>
                     <p>Price: {drinkPrice}$</p>
-                    <p>Quantity: {quantity}</p>
-                    <button onClick={()=>{addToCart(params.id, quantity, userCart)} }>Add to cart</button>
+                    <div className="quantity_set_up">
+                        <button onClick={editQuantity}>-</button>
+                        <p>Quantity : {quantity}</p>
+                        <button onClick={()=>setQuantity(quantity+1)}>+</button>
+                    </div>
+                    <button className="addToCartBtn" onClick={()=>{addToCart(params.id, quantity, userCart)} }>Add to cart</button>
                 </div>
             </div>
         <FaWhatsapp className='waIcon'/>

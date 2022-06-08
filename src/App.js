@@ -15,6 +15,7 @@ import Profile from './Components/user/Profile'
 import UserProvider from './Components/context/UserContext';
 import Login from './Components/auth/Login';
 import UserCart from './Components/user/UserCart';
+import OrderCompleted from './Components/OrderCompleted';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path='myProfile' element={<Profile/>}/>
               <Route path='login' element={<Login/>}/>         
               <Route path='userCart/:username' element={<UserCart/>}/>         
+              <Route path='orderCompleted/:client_id/:cart_id/:amount' element={<OrderCompleted/>}/>         
             </Routes>
       </BrowserRouter>
     </UserProvider>

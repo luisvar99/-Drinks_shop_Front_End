@@ -62,13 +62,15 @@ export default function DrinksByCategory() {
                             
                         drinks.map((drink)=>(
                             <>
-                            <div className='drinkByCategory_card'>
-                            <Link to={`/drinks/${drink.product_id}/details`} className='link_' key={drink.product_id}>
-                                <div className='img_container'>
-                                    <img src={drink.img_URL} alt={drink.name} className='category_img'/>
-                                </div>
-                                <p className='drinkByCategory_title'>{drink.name}</p>
-                            </Link>
+                            <div key={drink.product_id} className='drinkByCategory_card'>
+                                
+                                <Link to={`/drinks/${drink.product_id}/details`} className='link_' key={drink.product_id}>
+                                    <div className='img_container'>
+                                        <img src={drink.img_URL} alt={drink.name} className='category_img'/>
+                                    </div>
+                                    <p className='drinkByCategory_title'>{drink.name}</p>
+                                </Link>
+
                             </div>
                         </>
                         
