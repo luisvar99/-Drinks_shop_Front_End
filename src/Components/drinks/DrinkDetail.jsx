@@ -29,7 +29,7 @@ export default function DrinkDetail() {
             console.log('Params -> ' + JSON.stringify(params.id));
             setDrinkName(res.data[0].name);
             setDrinkDescription(res.data[0].description);
-            setDrinkImg(res.data[0].img_URL);
+            setDrinkImg(res.data[0].img);
             setDrinkPrice(res.data[0].price);
         }).catch((err)=>{
             console.log(err);
@@ -84,7 +84,7 @@ export default function DrinkDetail() {
                     <div className="quantity_set_up">
                         <button onClick={editQuantity}>-</button>
                         <p>Quantity : {quantity}</p>
-                        <button onClick={()=>setQuantity(quantity+1)}>+</button>
+                        <button onClick={()=>setQuantity(quantity+1)} >+</button>
                     </div>
                     <button className="addToCartBtn" onClick={()=>{addToCart(params.id, quantity, userCart)} }>Add to cart</button>
                 </div>

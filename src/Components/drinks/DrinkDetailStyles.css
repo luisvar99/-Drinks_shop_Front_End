@@ -15,7 +15,7 @@
 }
 
 .sub_detail_container{
-    width: 30vw;
+    width: 20vw;
 }
 .sub_detail_container img{
     width: 100%;
@@ -36,11 +36,23 @@
 
 .quantity_set_up{
     display:flex;
+    align-items: center;
+    margin-top: 1rem;
 }
 .quantity_set_up>button{
-    margin:0
+    margin:0;
+    font-size:1.2rem;
+    padding: 10px
 }
 
 .quantity_set_up>p{
     padding: 0 10px;
+}
+
+.addToCartBtn{
+    width:100%;
+    margin: 1rem 0;
+    padding: 10px;
+    font-size:1.1rem;
+    margin-top:2rem
 }

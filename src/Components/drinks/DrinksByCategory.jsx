@@ -66,7 +66,7 @@ export default function DrinksByCategory() {
                                 
                                 <Link to={`/drinks/${drink.product_id}/details`} className='link_' key={drink.product_id}>
                                     <div className='img_container'>
-                                        <img src={drink.img_URL} alt={drink.name} className='category_img'/>
+                                        <img src={drink.img} alt={drink.name} className='category_img'/>
                                     </div>
                                     <p className='drinkByCategory_title'>{drink.name}</p>
                                 </Link>
